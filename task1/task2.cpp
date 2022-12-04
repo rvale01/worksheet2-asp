@@ -1,5 +1,6 @@
 #include "bumpAllocator.hpp"
 #include <simpletest.h>
+
 using namespace std;
 char const * groups[] = {
     "Bump",
