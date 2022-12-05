@@ -4,7 +4,7 @@
 using namespace std;
 
 template <int Size>
-class BumpAllocator {
+class BumpAllocatorUp {
     private:
         void* p_next; //pointer to the next available location
         int allocation_counter; // it counts how many successfull allocation were made
@@ -12,7 +12,7 @@ class BumpAllocator {
         std::size_t tot_size; // total size available
 
     public:
-    BumpAllocator(){
+    BumpAllocatorUp(){
         allocation_counter = 0; //setting the counter to 0
         heap = new char[Size]; // initialising the heap
         p_next = (void*)heap;// equal to the start address of the heap 
