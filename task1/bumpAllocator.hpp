@@ -17,7 +17,7 @@ class BumpAllocator {
         heap = new char[Size]; // initialising the heap
         p_next = (void*)heap;// equal to the start address of the heap 
         // calculating the tot size
-        tot_size =  (std::size_t)((heap + Size) - (char*)p_next);
+        tot_size =  (std::size_t)Size;
     }
     
 

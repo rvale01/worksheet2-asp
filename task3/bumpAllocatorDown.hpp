@@ -15,16 +15,14 @@ class BumpAllocatorDown {
     BumpAllocatorDown(){
         allocation_counter = 0;
         heap = new char[Size];
-        p_next = (void*)&heap[Size - 1];// equal to the end address of the heap 
-        tot_size =  (std::size_t)((char*)p_next - (heap - Size));
+        p_next = (void*)(heap+(Size - 1));// equal to the end address of the heap 
+        tot_size =  (std::size_t)Size;
     }
     
     // use template
     template<typename T>
     T* alloc (T num){
-        std::cout << tot_size << ("This is working fine!") << std::endl;
-
-        if (std::align(alignof(T), sizeof(T)*num, p_next, tot_size)) {
+        if(tot_size >= sizeof(T)*num){
             allocation_counter++;
             p_next = (char*)p_next - sizeof(T)*num;
             tot_size -= sizeof(T)*num;
