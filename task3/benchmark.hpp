@@ -3,19 +3,35 @@
 #include <iostream>
 #include <thread>
 
-template<typename Function, typename... Args>
-void benchmark(Function func, Args... args){
-    using std::chrono::high_resolution_clock;
-    using std::chrono::duration_cast;
-    using std::chrono::duration;
-    using std::chrono::milliseconds;
-    auto t1 = high_resolution_clock::now();
-    func(args...);
-    auto t2 = high_resolution_clock::now();
-    /* Getting number of milliseconds as an integer. */
-    auto ms_int = duration_cast<milliseconds>(t2 - t1);
-    /* Getting number of milliseconds as a double. */
-    duration<double, std::milli> ms_double = t2 - t1;
-    std::cout << ms_int.count() << "ms\n";
-    std::cout << ms_double.count() << "ms\n";
-}
+class Benchmark {
+    private: 
+        std::chrono::_V2::system_clock::time_point t1;
+        std::chrono::_V2::system_clock::time_point t2;
+
+    public: 
+        Benchmark(){
+            using std::chrono::high_resolution_clock;
+            t2 = high_resolution_clock::now();
+            t1 = high_resolution_clock::now();
+        }
+
+        void start() {
+            using std::chrono::high_resolution_clock;
+            t1 = high_resolution_clock::now();
+        }
+
+        void end(){
+            using std::chrono::high_resolution_clock;
+            t2 = high_resolution_clock::now();
+        }
+
+        double get_time(){
+            using std::chrono::duration;
+            using std::chrono::milliseconds;
+            using std::chrono::duration_cast;
+
+            duration<double, std::milli> ms_double = t2 - t1;
+            return ms_double.count();
+        }
+    
+};
