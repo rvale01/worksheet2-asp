@@ -70,80 +70,80 @@ DEFINE_TEST_G(BumpTest4, Bump){
 
 // trying to reallocate when the allocation_counter is not 0 after deallocation is performed
 DEFINE_TEST_G(BumpTest5, Bump){
-    BumpAllocator<6*sizeof(char)> bumper; //creating an object of size 24
+    BumpAllocator<6*sizeof(int)> bumper; //creating an object of size 24
 
-    char * tmp1 = bumper.alloc<char>(4); //allocating 4 bits
+    int * tmp1 = bumper.alloc<int>(4); //allocating 16 bits
     TEST_MESSAGE(tmp1 != nullptr, "Test passed! Bumper worked");
 
-    char * tmp2 = bumper.alloc<char>(2); // allocating 2 bits
+    int * tmp2 = bumper.alloc<int>(2); // allocating 8 bits
     TEST_MESSAGE(tmp2 != nullptr, "Test passed! Bumper worked!");
 
-    // trying to allocate 10 bits, but it fails because there is not enough space
-    char * tmp3 = bumper.alloc<char>(10); 
+    // trying to allocate 40 bits, but it fails because there is not enough space
+    int * tmp3 = bumper.alloc<int>(10); 
     TEST_MESSAGE(tmp3 == nullptr, "Test passed! Failed to allocate!!!!");
 
     // deallocating one of the allocations
     bumper.dealloc(tmp2);
 
-    // trying to allocate a new allocation of size 2, but failing because the allocation haven't been reset yet
-    char * tmp4 = bumper.alloc<char>(2);
+    // trying to allocate a new allocation of size 8, but failing because the allocation haven't been reset yet
+    int * tmp4 = bumper.alloc<int>(2);
     TEST_MESSAGE(tmp4 == nullptr, "Test passed! Failed to allocate!!!!");
 }
 
 // trying to reallocate when the allocation_counter is not 0 after deallocation is performed
 DEFINE_TEST_G(BumpTest6, Bump){
-    BumpAllocator<6*sizeof(char)> bumper;
-    char * tmp1 = bumper.alloc<char>(5); //allocating 20 bits
+    BumpAllocator<6*sizeof(char)> bumper; //creating an object of size 6
+    char * tmp1 = bumper.alloc<char>(5); //allocating 5 bits
     TEST_MESSAGE(tmp1 != nullptr, "Test passed! Bumper worked");
 
-    char * tmp2 = bumper.alloc<char>(1); //allocating 4 bits
+    char * tmp2 = bumper.alloc<char>(1); //allocating 1 bit
     TEST_MESSAGE(tmp2 != nullptr, "Test passed! Bumper worked!");
 
-    // trying to allocate 40 bits, but it fails because there is not enough space
+    // trying to allocate 10 bits, but it fails because there is not enough space
     char * tmp3 = bumper.alloc<char>(10);
     TEST_MESSAGE(tmp3 == nullptr, "Test passed! Failed to allocate!!!!");
 
     // deallocating one of the allocations
     bumper.dealloc(tmp2);
 
-    // trying to allocate a new allocation of size 4, but failing because the allocation haven't been reset yet
+    // trying to allocate a new allocation of size 1, but failing because the allocation haven't been reset yet
     char * tmp4 = bumper.alloc<char>(1);
     TEST_MESSAGE(tmp4 == nullptr, "Test passed! Failed to allocate!!!!");
 }
 
 // deallocating and reallocating values
 DEFINE_TEST_G(BumpTest7, Bump){
-    BumpAllocator<6*sizeof(char)> bumper; //creating an object of size 24
+    BumpAllocator<6*sizeof(int)> bumper; //creating an object of size 24
 
-    char * tmp1 = bumper.alloc<char>(4); //allocating 4 bits
+    int * tmp1 = bumper.alloc<int>(4); //allocating 16 bits
     TEST_MESSAGE(tmp1 != nullptr, "Test passed! Bumper worked");
 
-    char * tmp2 = bumper.alloc<char>(2); // allocating 2 bits
+    int * tmp2 = bumper.alloc<int>(2); // allocating 8 bits
     TEST_MESSAGE(tmp2 != nullptr, "Test passed! Bumper worked!");
 
-    // trying to allocate 10 bits, but it fails because there is not enough space
-    char * tmp3 = bumper.alloc<char>(10); 
+    // trying to allocate 40 bits, but it fails because there is not enough space
+    int * tmp3 = bumper.alloc<int>(10); 
     TEST_MESSAGE(tmp3 == nullptr, "Test passed! Failed to allocate!!!!");
 
     // deallocating all of the successful allocations
     bumper.dealloc(tmp2);
     bumper.dealloc(tmp1);
 
-    // allocating a new allocation of size 2
-    char * tmp4 = bumper.alloc<char>(2);
+    // allocating a new allocation of size 8
+    int * tmp4 = bumper.alloc<int>(2);
     TEST_MESSAGE(tmp4 != nullptr, "Test passed! Failed to allocate!!!!");
 }
 
 // deallocating and reallocating values
 DEFINE_TEST_G(BumpTest8, Bump){
     BumpAllocator<6*sizeof(char)> bumper;
-    char * tmp1 = bumper.alloc<char>(5); //allocating 20 bits
+    char * tmp1 = bumper.alloc<char>(5); //allocating 5 bits
     TEST_MESSAGE(tmp1 != nullptr, "Test passed! Bumper worked");
 
-    char * tmp2 = bumper.alloc<char>(1); //allocating 4 bits
+    char * tmp2 = bumper.alloc<char>(1); //allocating 1 bits
     TEST_MESSAGE(tmp2 != nullptr, "Test passed! Bumper worked!");
 
-    // trying to allocate 40 bits, but it fails because there is not enough space
+    // trying to allocate 10 bits, but it fails because there is not enough space
     char * tmp3 = bumper.alloc<char>(10);
     TEST_MESSAGE(tmp3 == nullptr, "Test passed! Failed to allocate!!!!");
 
@@ -151,7 +151,7 @@ DEFINE_TEST_G(BumpTest8, Bump){
     bumper.dealloc(tmp2);
     bumper.dealloc(tmp1);
 
-    // // allocating a new allocation of size 4
+    // // allocating a new allocation of size 1
     char * tmp4 = bumper.alloc<char>(1);
     TEST_MESSAGE(tmp4 != nullptr, "Test passed! Failed to allocate!!!!");
 }
