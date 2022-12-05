@@ -17,7 +17,7 @@ class BumpAllocatorUp {
         heap = new char[Size]; // initialising the heap
         p_next = (void*)heap;// equal to the start address of the heap 
         // calculating the tot size
-        tot_size =  (std::size_t)Size;
+        tot_size =  (std::size_t)Size; //setting the total size equal to the size passed to the class
     }
     
 
@@ -39,7 +39,7 @@ class BumpAllocatorUp {
     // the reset function just resets all the values as done in the constructor
     void reset(){
         p_next = (void*)heap; //the next pointer is reset to start of the heap
-        tot_size =  (std::size_t)((heap + Size) - (char*)p_next); // the tot size is recalculated
+        tot_size = (std::size_t)Size; // the tot size is reset to the initial Size
     }
 
 
