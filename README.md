@@ -70,7 +70,7 @@ This class is tested in the testing file. It has the same tests used for the bum
 
 Here is the result in running them:
 <br/>
-![Alt text](https://gitlab.uwe.ac.uk/v2-ronchi/worksheet2-asp/-/blob/main/task_3.1.png "Task 1")
+![Alt text](https://gitlab.uwe.ac.uk/v2-ronchi/worksheet2-asp/-/raw/main/task_3.1.png "Task 1")
 
 
 <h3>Benchmark</h3>
