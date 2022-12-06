@@ -27,6 +27,10 @@ To run task 1 this is the command:
 <code>clang++ -o task1 task1.cpp</code>
 <code>./task1</code>
 
+Here is the result in running them:
+<br/>
+![Alt text](https://gitlab.uwe.ac.uk/v2-ronchi/worksheet2-asp/-/raw/main/task1.png "Task 1")
+
 <h3>Task 2</h3>
 Task 2 includes testing. In order to do that, an external repo was added to the project. A total of 8 tests were written, 4 for chars and 4 for integers.
 The tests written are:
@@ -40,6 +44,11 @@ The tests written are:
 To run task 2 this is the command:
 <code>clang++ -std=c++17 -I./simpletest -o task2 task2.cpp simpletest/simpletest.cpp</code>
 <code>./task2</code>
+
+Here is the result in running them:
+<br/>
+![Alt text](https://gitlab.uwe.ac.uk/v2-ronchi/worksheet2-asp/-/raw/main/task_2.png "Task 1")
+
 
 # Part 2
 The other folder (task3) has all the files which are needed for task 3. Task included creating a bump down allocator and a benchmark library which could calculate how much time it takes to run a function.
@@ -59,6 +68,11 @@ This class is tested in the testing file. It has the same tests used for the bum
 <code>clang++ -std=c++17 -I./simpletest -o testing testing.cpp simpletest/simpletest.cpp</code>
 <code>./testing</code>
 
+Here is the result in running them:
+<br/>
+![Alt text](https://gitlab.uwe.ac.uk/v2-ronchi/worksheet2-asp/-/blob/main/task_3.1.png "Task 1")
+
+
 <h3>Benchmark</h3>
 For the benchmark, a class was created, which contains two attributes: t1 and t2 (the start and end time)
 
@@ -73,3 +87,8 @@ For each type of bumper, the same amount of allocations are done, and the benchm
 In order to run the benchmark, the following command can be used:
 <code>clang++ -o main main.cpp</code>
 <code>./main</code>
+
+Here is the result in running them:
+<br/>
+![Alt text](https://gitlab.uwe.ac.uk/v2-ronchi/worksheet2-asp/-/raw/main/task_3.2.png "Task 1")
+
